@@ -12,19 +12,21 @@ faturamento_maximo = float('-inf')
 faturamento_total = 0
 dias_com_faturamento = 0
 for dia in dados_faturamento['faturamento']:
-    if dia > 0:
-        faturamento_total += dia
+    valor = dia['valor']
+    if valor > 0:
+        faturamento_total += valor
         dias_com_faturamento += 1
-        if dia < faturamento_minimo:
-            faturamento_minimo = dia
-        if dia > faturamento_maximo:
-            faturamento_maximo = dia
+        if valor < faturamento_minimo:
+            faturamento_minimo = valor
+        if valor > faturamento_maximo:
+            faturamento_maximo = valor
 faturamento_medio = faturamento_total / dias_com_faturamento
 
 # Calcula o número de dias com faturamento acima da média
 dias_acima_da_media = 0
 for dia in dados_faturamento['faturamento']:
-    if dia > faturamento_medio:
+    valor = dia['valor']
+    if valor > faturamento_medio:
         dias_acima_da_media += 1
 
 # Exibe os resultados
